@@ -1,0 +1,19 @@
+node_modules
+.env
+# .env.backup
+# .env.secrets
+package-lock.json
+npm-debug.log
+yarn-error.log
+node_modules
+npm-debug.log
+build
+.dockerignore
+/.fleet
+/.idea
+/.vscode
+/.npm
+/.bash_history
+/_data
+.rnd
+/.ssh

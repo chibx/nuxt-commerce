@@ -1,0 +1,102 @@
+@font-face {
+    font-family: 'DM Sans';
+    src: url('~/assets/fonts/DMSans-Bold.woff2') format('woff2');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: url('~/assets/fonts/DMSans-Medium.woff2') format('woff2');
+    font-weight: normal;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'DM Sans' !important;
+}
+
+.pi{
+    font-family: 'primeicons' !important;
+}
+.p-toast-message{
+    border-radius: 10px;
+}
+.p-toast{
+    min-width: 300px;
+    max-width: 90%;
+}
+.p-toast-message-content{
+    gap: 20px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+.p-toast-message-content > :last-child {
+    margin-left: auto;
+}
+.p-toast-message-content i, .p-toast-message-content svg, .p-toast-message-content .p-icon, .p-toast-message-content > :last-child svg{
+    width: 18px;
+    height: 18px;
+}
+.p-toast-message-content svg{
+    margin-top: 5px;
+}
+.p-tooltip-text{
+    padding: 3px 10px;
+    margin-bottom: 3px;
+}
+
+#shadow {
+    fill: #f7f1f1;
+}
+
+.intro-button-enter-active, .intro-button-leave-active {
+    transition: 0.3s ease-in-out;
+}
+.intro-button-enter-from, .intro-button-leave-to {
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.form-enter-enter-active, .form-enter-leave-active {
+    transition: 0.5s linear;
+}
+.form-enter-enter-active .form, .form-enter-leave-active .form{
+    transition: 0.3s ease;
+}
+.form-enter-enter-from .form, .form-enter-leave-to .form{
+     transform: translateY(10%);
+     opacity: 0;
+}
+
+/* .enter-up-enter-active, .enter-up-leave-active {
+    transition: 0.3s linear;
+}
+.enter-up-enter-from, .enter-up-leave-to{
+     transform: translateY(20%);
+     opacity: 0;
+} */
+
+.fade-enter-active, .fade-leave-active {
+    transition: 0.3s ease;
+}
+.fade-enter-from, .fade-leave-to{
+     opacity: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    path#shadow {
+        fill: #2c2929;
+    }
+    .ios body {
+        --ion-background-color: #0c0c0c;
+      }
+      
+      .md body {
+        --ion-background-color: #0c0c0c;
+      
+      }
+      
+}
