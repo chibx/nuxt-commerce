@@ -19,7 +19,7 @@ export interface UploadApiResponse {
     format: string;
     resource_type: "image" | "video" | "raw" | "auto";
     created_at: string;
-    tags: Array<string>;
+    tags: string[];
     pages: number;
     bytes: number;
     type: string;
@@ -29,8 +29,8 @@ export interface UploadApiResponse {
     secure_url: string;
     access_mode: string;
     original_filename: string;
-    moderation: Array<string>;
-    access_control: Array<string>;
+    moderation: string[];
+    access_control: string[];
     context: object; //won't change since it's response, we need to discuss documentation team about it before implementing.
     metadata: object; //won't change since it's response, we need to discuss documentation team about it before implementing.
     colors?: [string, number][];

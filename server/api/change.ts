@@ -1,4 +1,4 @@
-import { SupportedDatabases } from "~/types/server";
+import { SupportedDatabases } from "~/server/types";
 import { changeDatabase } from "../utils/util";
 
 export default defineEventHandler<{ query: { name?: string } }>(async (event) => {

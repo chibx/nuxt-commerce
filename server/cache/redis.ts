@@ -15,9 +15,10 @@ import { createClient } from "redis";
 
 export async function createRedisClient() {
     const url = await getRedisUrl();
-    //TODO Remove hardcoded url
+
     const client = createClient({ url });
     client.on("error", (err) => {
+        // TODO: Improve this
         console.error(err);
     });
     if (import.meta.prerender !== true) {
@@ -27,14 +28,14 @@ export async function createRedisClient() {
 }
 
 async function getRedisUrl() {
-    const serverData = await getServerData();
-    const redis = serverData.tools.redis;
-    const url = redis?.REDIS_URL;
-    if (url === undefined) {
+    const { redisUrl } = useRuntimeConfig();
+    if (redisUrl === undefined) {
         throw createError({
             statusCode: 511,
             statusMessage: `No URL found for Redis`,
         });
     }
-    return url;
+    return redisUrl;
 }
+
+export const redis = await createRedisClient();

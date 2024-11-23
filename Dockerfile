@@ -24,6 +24,8 @@ RUN chown nuxt-commerce:nodejs .output
 
 COPY --from=builder /app/.output ./.output
 
+USER nuxt-commerce
+
 EXPOSE 3000
 
 # Start the app using serve command

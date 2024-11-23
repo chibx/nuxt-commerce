@@ -1,8 +1,8 @@
 import { sql, eq } from "drizzle-orm";
-import { users } from "../db/schema";
-import db from "../services/database/providers/supabase";
+import { users } from "./schema";
+import { db } from "./index";
 
-export const checkUserExist = (await db()).query.users
+export const checkUserExist = db.query.users
     .findFirst({
         where: (users, { eq }) => eq(users.email, sql.placeholder("email")),
         columns: {
@@ -11,7 +11,7 @@ export const checkUserExist = (await db()).query.users
     })
     .prepare("checkUserExist");
 
-export const createUser = (await db())
+export const createUser = db
     .insert(users)
     .values({
         fullName: sql.placeholder("fullName"),
@@ -23,7 +23,7 @@ export const createUser = (await db())
     })
     .prepare("createUser");
 
-export const getUserLogin = (await db())
+export const getUserLogin = db
     .select({
         email: users.email,
         fullName: users.fullName,

@@ -62,7 +62,11 @@ export default defineNuxtConfig({
             installPrompt: true,
         },
     },
-    runtimeConfig: {},
+    runtimeConfig: {
+        mailerSendKey: process.env.NUXT_MAILER_SEND_KEY,
+        databaseURL: process.env.NUXT_DATABASE_URL,
+        redisUrl: process.env.NUXT_REDIS_URL,
+    },
     nitro: {
         serverAssets: [
             {
@@ -102,7 +106,10 @@ export default defineNuxtConfig({
             }),
         ],
         build: {
-
+            minify: 'terser',
+            terserOptions: {
+                ecma: 2018,
+            }
         },
         esbuild: {
             target: "es2020",
