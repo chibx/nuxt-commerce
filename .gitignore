@@ -17,8 +17,6 @@ logs
 .DS_Store
 .fleet
 .idea
-Caddyfile
-redis
 
 # Local env files
 .env

@@ -34,8 +34,8 @@ export default defineNuxtConfig({
     modules: ["@pinia/nuxt", "@formkit/auto-animate/nuxt", "@nuxtjs/tailwindcss", "@vite-pwa/nuxt"],
     css: [
         // "~/assets/css/main.css",
-        "primeicons/primeicons.css",
-        "primevue/resources/themes/viva-light/theme.css",
+        // "primeicons/primeicons.css",
+        // "primevue/resources/themes/viva-light/theme.css",
     ],
     tailwindcss: {},
     vue: {
@@ -102,16 +102,13 @@ export default defineNuxtConfig({
             }),
         ],
         build: {
-            cssMinify: "lightningcss",
+
         },
         esbuild: {
             target: "es2020",
         },
         ssr: {
             external: true,
-        },
-        css: {
-            transformer: "lightningcss",
         },
         define: {
             "import.meta.db": JSON.stringify("PostgreSQL - Local"),

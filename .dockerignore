@@ -8,7 +8,10 @@ yarn-error.log
 node_modules
 npm-debug.log
 build
+.nuxt
+.output
 .dockerignore
+.gitignore
 /.fleet
 /.idea
 /.vscode

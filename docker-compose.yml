@@ -1,20 +1,20 @@
 services:
   app1:
     build:
-      dockerfile: ./Dockerfile
+      context: ./
+      target: install
     ports:
       - 3000:3000
-    container_name: 1-nuxt-commerce
+    container_name: nuxt-commerce-1
     hostname: app1
     # expose:
     #   - 3000
-    stdin_open: true
     shm_size: 128mb
     env_file:
       - ./.env
     volumes:
-      - .:/usr/app
-      - node_modules:/usr/app/node_modules:delegated
+      # - .:/usr/app
+      - ./node_modules:/usr/app/node_modules
     restart: on-failure
     networks:
       - comx-net
@@ -22,24 +22,24 @@ services:
       - postgres
       - redis
       - rabbitmq
-      - kafka
+      # - kafka
 
   app2:
     build:
-      dockerfile: ./Dockerfile
+      context: ./
+      target: install
     ports:
       - 3001:3000
-    container_name: 2-nuxt-commerce
+    container_name: nuxt-commerce-2
     hostname: app2
     # expose:
     #   - 3001
-    stdin_open: true
     shm_size: 128mb
     env_file:
       - ./.env
     volumes:
-      - .:/usr/app
-      - node_modules:/usr/app/node_modules:delegated
+      # - .:/usr/app
+      - ./node_modules:/usr/app/node_modules
     restart: on-failure
     networks:
       - comx-net
@@ -47,24 +47,24 @@ services:
       - postgres
       - redis
       - rabbitmq
-      - kafka
+      # - kafka
 
   app3:
     build:
-      dockerfile: ./Dockerfile
+      context: ./
+      target: install
     ports:
       - 3002:3000
-    container_name: 3-nuxt-commerce
+    container_name: nuxt-commerce-3
     hostname: app3
     # expose:
     #   - 3002
-    stdin_open: true
     shm_size: 128mb
     env_file:
       - ./.env
     volumes:
-      - .:/usr/app
-      - node_modules:/usr/app/node_modules:delegated
+      # - .:/usr/app
+      - ./node_modules:/usr/app/node_modules
     restart: on-failure
     networks:
       - comx-net
@@ -72,17 +72,21 @@ services:
       - postgres
       - redis
       - rabbitmq
-      - kafka
+      # - kafka
 
   rabbitmq:
-    image: rabbitmq:3.13.3-management
+    image: rabbitmq:4.0.3-alpine
     restart: unless-stopped
     container_name: nuxt-commerce-rabbitmq
     shm_size: 100mb
     env_file:
-      - .env
+      - ./.env
     expose:
       - 5672
+    deploy:
+      resources:
+        limits:
+          memory: 256M
     ports:
       - 15672:15672
     volumes:
@@ -90,20 +94,20 @@ services:
     networks:
       - comx-net
 
-  kafka:
-    image: apache/kafka:3.7.0
-    restart: unless-stopped
-    container_name: nuxt-commerce-kafka
-    shm_size: 100mb
-    env_file:
-      - .env
-    expose:
-      - 9092
-    # ports:
-    #   - 29092:29092
+  # kafka:
+  #   image: apache/kafka:alpine
+  #   restart: unless-stopped
+  #   container_name: nuxt-commerce-kafka
+  #   shm_size: 100mb
+  #   env_file:
+  #     - ./.env
+  #   expose:
+  #     - 9092
+  #   # ports:
+  #   #   - 29092:29092
 
   postgres:
-    image: postgres:16-alpine
+    image: postgres:17-alpine
     restart: unless-stopped
     container_name: nuxt-commerce-postgres
     shm_size: 256mb
@@ -119,53 +123,40 @@ services:
     #   - 5432:5432
 
   redis:
-    image: redis:7.0-alpine
+    image: redis:7.4.1-alpine
     restart: unless-stopped
     container_name: nuxt-commerce-redis
-    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    # command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    # command: sudo service redis-server start
+    command: redis-server --save 300 1 --loglevel warning
     shm_size: 256mb
     env_file:
       - ./.env
     ports:
       - 6379:6379
     volumes:
+      # - ./redis.conf:/etc/redis/redis.conf
       - ./redis:/usr/local/etc/redis
       - nuxt-commerce-redis:/data
     networks:
       - comx-net
-    # nginx:
-    #   image: nginx:1.27-alpine-perl
-    #   restart: unless-stopped
-    #   ports:
-    #     - "80:80"
-    #   depends_on:
-    #     - app
-    #   networks:
-    #     - comx-net
 
-  caddy:
-    image: caddy:2.8.4-alpine
+  nginx:
+    # image: nginx:1.27.2-alpine
+    build:
+      context: ./nginx
+    container_name: nuxt-commerce-nginx
     restart: unless-stopped
-    shm_size: 128mb
     ports:
       - "80:80"
-    depends_on:
-      - app1
-      - app2
-      - app3
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - caddy_data:/data
-      - caddy_config:/config
+    networks:
+      - comx-net
 
 volumes:
-  caddy_data:
-  caddy_config:
   node_modules:
   nuxt-commerce-postgres:
   nuxt-commerce-redis:
   nuxt-commerce-rabbitmq:
-
 
 networks:
   comx-net:

@@ -1,19 +1,28 @@
 # Start your image with a node base image
-FROM node:22
+FROM node:22-alpine AS builder
+WORKDIR /app
 
-# The /app directory should act as the main application directory
-WORKDIR /usr/app
+COPY package*.json ./
 
-# Copy the app package and package-lock.json file
-COPY package.json /usr/app/
-# COPY . /usr/app/
+RUN npm install
 
-# Install node packages, install serve, build the app, and remove dependencies at the end
-RUN npm install \
-    && npm run build \
-    && rm -rf node_modules
+COPY . .
 
-# RUN npm run build
+RUN npm run build
+
+
+FROM node:22-alpine AS runner
+WORKDIR /app
+
+ENV NODE_ENV=production
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nuxt-commerce
+
+RUN mkdir .output
+RUN chown nuxt-commerce:nodejs .output
+
+COPY --from=builder /app/.output ./.output
 
 EXPOSE 3000
 
