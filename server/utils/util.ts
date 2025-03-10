@@ -1,12 +1,16 @@
-// import { Resend } from "resend";
-import { createRemoteJWKSet } from "jose";
 import type {
     // ServerData, 
     ServerUtils
 } from "~/server/types";
 
-// Resend
-// export const resend = new Resend(resendApiKey);
+// import { createRemoteJWKSet } from "jose";
+// export const appleJwksClient = createRemoteJWKSet(new URL("https://appleid.apple.com/auth/keys"));
+
+// export const googleJwksClient = createRemoteJWKSet(new URL("https://www.googleapis.com/oauth2/v3/certs"));
+
+export { redis } from '../cache/redis';
+export { db } from '../db/index'
+
 
 export function convertMustache(str: string, opts: Record<string, string>) {
     let newStr = str;

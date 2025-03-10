@@ -1,5 +1,4 @@
 import svgLoader from "vite-svg-loader";
-const sw = process.env.SW === "true";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -31,11 +30,9 @@ export default defineNuxtConfig({
             base: { href: "/" },
         },
     },
-    modules: ["@pinia/nuxt", "@formkit/auto-animate/nuxt", "@nuxtjs/tailwindcss", "@vite-pwa/nuxt"],
+    modules: ["@pinia/nuxt", "@formkit/auto-animate/nuxt", "@nuxtjs/tailwindcss"],
     css: [
-        // "~/assets/css/main.css",
-        // "primeicons/primeicons.css",
-        // "primevue/resources/themes/viva-light/theme.css",
+
     ],
     tailwindcss: {},
     vue: {
@@ -43,23 +40,6 @@ export default defineNuxtConfig({
             prefixIdentifiers: true,
             mode: "module",
             comments: false,
-        },
-    },
-    pwa: {
-        registerWebManifestInRouteRules: false,
-        manifest: {
-            name: "Nuxt-Commerce",
-            short_name: "nuxt-commerce",
-            theme_color: "#ffffff",
-            icons: [],
-            display: "minimal-ui",
-        },
-        registerType: "autoUpdate",
-        strategies: sw ? "injectManifest" : "generateSW",
-        srcDir: sw ? "service-worker" : undefined,
-        filename: sw ? "sw.ts" : undefined,
-        client: {
-            installPrompt: true,
         },
     },
     runtimeConfig: {
@@ -95,9 +75,6 @@ export default defineNuxtConfig({
             //   },
             // },
         },
-        replace: {
-            "import.meta.db": JSON.stringify("PostgreSQL - Local"),
-        },
     },
     vite: {
         plugins: [
@@ -117,8 +94,5 @@ export default defineNuxtConfig({
         ssr: {
             external: true,
         },
-        define: {
-            "import.meta.db": JSON.stringify("PostgreSQL - Local"),
-        },
-    },
+    }
 });

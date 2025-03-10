@@ -19,7 +19,7 @@ export async function createRedisClient() {
     const client = createClient({ url });
     client.on("error", (err) => {
         // TODO: Improve this
-        console.error(err);
+        console.error(err + '');
     });
     if (import.meta.prerender !== true) {
         await client.connect();

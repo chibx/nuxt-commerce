@@ -24,3 +24,6 @@ logs
 !.env.example
 comx.json
 *.conf
+
+# Docker volumes
+nuxt-commerce-*/

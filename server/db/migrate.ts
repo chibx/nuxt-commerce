@@ -9,5 +9,3 @@ const client = postgres(databaseUrl, { prepare: false, max: 1 });
 await migrate(drizzle(client, { schema }), { migrationsFolder: "" });
 
 await client.end();
-
-export { };

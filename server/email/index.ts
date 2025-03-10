@@ -1,8 +1,8 @@
 import { MailerSend } from 'mailersend';
 
 
-const { } = useRuntimeConfig();
+const { mailerSendKey } = useRuntimeConfig();
 
-const mailersend = new MailerSend({
-    apiKey: 
+export const mailersend = new MailerSend({
+    apiKey: mailerSendKey
 })
