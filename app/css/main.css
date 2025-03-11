@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'DM Sans';
+    src: url('~/assets/fonts/DMSans-Bold.woff2') format('woff2');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: url('~/assets/fonts/DMSans-Medium.woff2') format('woff2');
+    font-weight: normal;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'DM Sans' !important;
+}

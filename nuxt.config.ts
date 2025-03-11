@@ -1,8 +1,11 @@
 import svgLoader from "vite-svg-loader";
+import tailwindcss from "@tailwindcss/vite"
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    devtools: { enabled: true },
+    future: {
+        compatibilityVersion: 4,
+    },
     app: {
         keepalive: {
             exclude: [],
@@ -30,7 +33,7 @@ export default defineNuxtConfig({
             base: { href: "/" },
         },
     },
-    modules: ["@pinia/nuxt", "@formkit/auto-animate/nuxt", "@nuxtjs/tailwindcss"],
+    modules: ["@pinia/nuxt", "@formkit/auto-animate/nuxt"],
     css: [
 
     ],
@@ -78,21 +81,13 @@ export default defineNuxtConfig({
     },
     vite: {
         plugins: [
+            tailwindcss(),
             svgLoader({
                 svgo: false,
             }),
         ],
-        build: {
-            minify: 'terser',
-            terserOptions: {
-                ecma: 2018,
-            }
-        },
         esbuild: {
             target: "es2020",
-        },
-        ssr: {
-            external: true,
         },
     }
 });

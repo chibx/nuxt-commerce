@@ -22,8 +22,9 @@ logs
 .env
 .env.*
 !.env.example
+
 comx.json
-*.conf
+redis/
 
 # Docker volumes
 nuxt-commerce-*/
