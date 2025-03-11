@@ -33,11 +33,10 @@ export default defineNuxtConfig({
             base: { href: "/" },
         },
     },
-    modules: ["@pinia/nuxt", "@formkit/auto-animate/nuxt"],
+    modules: ["@pinia/nuxt", "@formkit/auto-animate/nuxt", '@nuxt/icon'],
     css: [
 
     ],
-    tailwindcss: {},
     vue: {
         compilerOptions: {
             prefixIdentifiers: true,
