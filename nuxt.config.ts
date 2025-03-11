@@ -34,9 +34,7 @@ export default defineNuxtConfig({
         },
     },
     modules: ["@pinia/nuxt", "@formkit/auto-animate/nuxt", '@nuxt/icon'],
-    css: [
-
-    ],
+    css: ['~/assets/css/tailwind.css'],
     vue: {
         compilerOptions: {
             prefixIdentifiers: true,
