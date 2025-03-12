@@ -1,2 +1,17 @@
 @import 'tailwindcss';
 @tailwind utilities;
+
+
+@theme {
+    --color-pb-50: #ecf9ff;
+    --color-pb-100: #d5f0ff;
+    --color-pb-200: #b4e6ff;
+    --color-pb-300: #80d9ff;
+    --color-pb-400: #44c1ff;
+    --color-pb-500: #19a0ff;
+    --color-pb-600: #0180ff;
+    --color-pb-700: #0067fa;
+    --color-pb-800: #0452c9;
+    --color-pb-900: #0a499e;
+    --color-pb-950: #0f3877;
+}

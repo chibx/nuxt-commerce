@@ -1,7 +1,7 @@
 import type {
     // ServerData, 
     ServerUtils
-} from "~/server/types";
+} from "~~/server/types";
 
 // import { createRemoteJWKSet } from "jose";
 // export const appleJwksClient = createRemoteJWKSet(new URL("https://appleid.apple.com/auth/keys"));

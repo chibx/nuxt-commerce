@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     future: {
         compatibilityVersion: 4,
     },
+    devtools: { enabled: false },
     app: {
         keepalive: {
             exclude: [],
@@ -33,7 +34,7 @@ export default defineNuxtConfig({
             base: { href: "/" },
         },
     },
-    modules: ["@pinia/nuxt", "@formkit/auto-animate/nuxt", '@nuxt/icon'],
+    modules: ["@nuxt/eslint", "@pinia/nuxt", "@formkit/auto-animate/nuxt", '@nuxt/icon', "@nuxt/image", "@nuxtjs/i18n", "@nuxt/test-utils/module", "@nuxtjs/sitemap", "@nuxtjs/color-mode", "@nuxtjs/seo", "nuxt-csurf"],
     css: ['~/assets/css/tailwind.css'],
     vue: {
         compilerOptions: {
@@ -42,11 +43,13 @@ export default defineNuxtConfig({
             comments: false,
         },
     },
+
     runtimeConfig: {
         mailerSendKey: process.env.NUXT_MAILER_SEND_KEY,
         databaseURL: process.env.NUXT_DATABASE_URL,
         redisUrl: process.env.NUXT_REDIS_URL,
     },
+
     nitro: {
         serverAssets: [
             {
@@ -76,6 +79,7 @@ export default defineNuxtConfig({
             // },
         },
     },
+
     vite: {
         plugins: [
             tailwindcss(),
@@ -86,5 +90,7 @@ export default defineNuxtConfig({
         esbuild: {
             target: "es2020",
         },
-    }
+    },
+
+    compatibilityDate: "2025-03-11"
 });

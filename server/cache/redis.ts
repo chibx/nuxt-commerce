@@ -17,10 +17,10 @@ export async function createRedisClient() {
     const url = await getRedisUrl();
 
     const client = createClient({ url });
-    client.on("error", (err) => {
-        // TODO: Improve this
-        console.error(err + '');
-    });
+    // client.on("error", (err) => {
+    //     // TODO: Improve this
+    //     console.error(err + '');
+    // });
     if (import.meta.prerender !== true) {
         await client.connect();
     }
