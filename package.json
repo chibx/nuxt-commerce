@@ -1,8 +1,12 @@
 {
   "name": "nuxt-commerce",
-  "description": "Nuxt 3 CMS for E-commerce",
-  "private": true,
   "type": "module",
+  "private": true,
+  "packageManager": "pnpm@10.6.2+sha512.47870716bea1572b53df34ad8647b42962bc790ce2bf4562ba0f643237d7302a3d6a8ecef9e4bdfc01d23af1969aa90485d4cebb0b9638fa5ef1daef656f6c1b",
+  "description": "Nuxt 3 CMS for E-commerce",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -10,9 +14,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "prepare": "husky"
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.8.2",
@@ -52,9 +55,9 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^4.10.1",
     "@eslint/js": "^9.22.0",
     "@iconify/vue": "^4.3.0",
-    "@nuxt/eslint": "^1.2.0",
     "@nuxt/test-utils": "^3.17.2",
     "@tailwindcss/vite": "^4.0.13",
     "@types/amqplib": "^0.10.7",
@@ -65,18 +68,12 @@
     "drizzle-kit": "^0.30.5",
     "eslint": "^9.22.0",
     "happy-dom": "^17.4.4",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.4.3",
     "nuxt": "^3.16.0",
     "playwright-core": "^1.51.0",
-    "prettier": "^3.5.3",
     "tailwindcss": "^4.0.13",
     "typescript": "^5.8.2",
     "vite-svg-loader": "^5.1.0",
     "vitest": "^3.0.8"
-  },
-  "engines": {
-    "node": ">=18.0.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -85,12 +82,5 @@
       "sharp",
       "vue-demi"
     ]
-  },
-  "lint-staged": {
-    "*.{(js|ts)x?, vue}": [
-      "prettier --write",
-      "eslint --max-warnings 0 ."
-    ]
-  },
-  "packageManager": "pnpm@10.6.2+sha512.47870716bea1572b53df34ad8647b42962bc790ce2bf4562ba0f643237d7302a3d6a8ecef9e4bdfc01d23af1969aa90485d4cebb0b9638fa5ef1daef656f6c1b"
+  }
 }
