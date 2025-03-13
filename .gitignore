@@ -28,3 +28,10 @@ redis/
 
 # Docker volumes
 nuxt-commerce-*/
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+
+# Optional eslint cache
+.eslintcache
