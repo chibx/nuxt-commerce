@@ -1,5 +1,5 @@
 import { v2 } from "cloudinary";
-export const cloudFolder = "everything-enterprise";
+export const PRODUCTS = "products";
 
 const {
 	cloudinaryApiSecret,
