@@ -1,7 +1,7 @@
 import { sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
-import * as schema from "../db/schema";
+import * as schema from "./schema";
 
 const { databaseURl: databaseUrl } = useRuntimeConfig();
 const client = postgres(databaseUrl);

@@ -27,7 +27,8 @@ comx.json
 redis/
 
 # Docker volumes
-nuxt-commerce-*/
+nuxt-commerce-*/**
+!.gitkeep
 
 # Coverage directory used by tools like istanbul
 coverage

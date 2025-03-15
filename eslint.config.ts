@@ -7,5 +7,7 @@ export default antfu({
 	jsonc: false,
 	rules: {
 		"antfu/no-top-level-await": "off",
+		"vue/singleline-html-element-content-newline": "off",
+		"vue/html-indent": "off",
 	},
 });

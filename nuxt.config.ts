@@ -4,14 +4,10 @@ import svgLoader from "vite-svg-loader";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-	future: { compatibilityVersion: 4 },
 	devtools: { enabled: false },
-	i18n: {
-		locales: ["en"],
-		lazy: true,
-	},
+	i18n: { locales: ["en"], defaultLocale: "en" },
+	srcDir: "./app",
 	app: {
-		keepalive: { exclude: [] },
 		head: {
 			charset: "utf-8",
 			meta: [
@@ -38,11 +34,12 @@ export default defineNuxtConfig({
 			base: { href: "/" },
 		},
 	},
+
 	modules: [
-		"@pinia/nuxt",
 		"@formkit/auto-animate/nuxt",
-		"@nuxt/icon",
 		"@nuxt/image",
+		"@pinia/nuxt",
+		"@nuxt/icon",
 		"@nuxtjs/i18n",
 		"@nuxt/test-utils/module",
 		"@nuxtjs/sitemap",
@@ -50,12 +47,9 @@ export default defineNuxtConfig({
 		"@nuxtjs/seo",
 		"nuxt-csurf",
 	],
+
 	css: ["~/assets/css/tailwind.css"],
-	vue: {
-		compilerOptions: {
-			mode: "module",
-		},
-	},
+	vue: { compilerOptions: { mode: "module" } },
 
 	runtimeConfig: {
 		mailerSendKey: process.env.NUXT_MAILER_SEND_KEY,
@@ -93,5 +87,5 @@ export default defineNuxtConfig({
 		esbuild: { target: "es2020" },
 	},
 
-	compatibilityDate: "2025-03-11",
+	compatibilityDate: "2025-03-14",
 });
