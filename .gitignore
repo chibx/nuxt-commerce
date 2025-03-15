@@ -36,3 +36,7 @@ coverage
 
 # Optional eslint cache
 .eslintcache
+
+# Local migration files (I won't be using serverless databases for now )
+# If ignoring this folder is wrong, please reach out to me
+drizzle

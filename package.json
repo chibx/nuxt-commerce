@@ -14,7 +14,12 @@
 		"preview": "nuxt preview",
 		"postinstall": "nuxt prepare",
 		"lint": "eslint . --max-warnings 0",
-		"lint:fix": "eslint . --fix"
+		"lint:fix": "eslint . --fix",
+		"dz:generate": "drizzle-kit generate",
+		"dz:migrate": "drizzle-kit migrate",
+		"dz:up": "drizzle-kit up",
+		"dz:pull": "drizzle-kit pull",
+		"dz:push": "drizzle-kit push"
 	},
 	"dependencies": {
 		"@formkit/auto-animate": "^0.8.2",
